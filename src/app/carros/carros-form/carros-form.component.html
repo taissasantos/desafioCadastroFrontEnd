@@ -1,0 +1,78 @@
+<h1 class="mt-4">Carros</h1>
+<ol class="breadcrumb mb-4">
+<li class="breadcrumb-item active">{{ carros.id ? 'Edição' : 'Cadastro'}}</li>
+</ol>
+
+<div class="container"> 
+    <form #carrosForm="ngForm" (ngSubmit)="onSubmit()">
+
+       <div class="row">
+          <div class="col-md-12">
+             <div class="alert alert-success" role="alert" *ngIf="sucess == true">
+                Carro cadastrado/atualizado com sucesso.
+             </div>
+             
+          </div>
+       </div>
+
+        <div class="row">
+           <div class="col-md-12"> 
+              <div class="form-group">
+                  <label>ID:</label>
+                  <input type="text" [ngModel]="carros.id" name="id" class="form-control" disabled="true"/>
+              </div>
+           </div>
+        </div>
+
+        <div class="row">
+           <div class="col-md-6"> 
+              <div class="form-group">
+                  <label>Ano de fabricação do carro: </label>
+                  <input type="text" class="form-control" [(ngModel)]="carros.year" name="year" />
+              </div>
+           </div>
+
+           <div class="col-md-6"> 
+              <div class="form-group">
+                  <label>Placa do carro: *</label>
+                  <input type="text" class="form-control" [(ngModel)]="carros.licensePlate" name="licensePlate" />
+              </div>
+           </div>
+
+           <div class="col-md-6"> 
+              <div class="form-group">
+                  <label>Modelo: </label>
+                  <input type="text" class="form-control" [(ngModel)]="carros.model" name="model" />
+              </div>
+           </div>
+
+           <div class="col-md-6"> 
+              <div class="form-group">
+                  <label>Cor: </label>
+                  <input type="text" class="form-control" [(ngModel)]="carros.color" name="color" />
+              </div>
+           </div>        
+
+           
+        </div>
+
+        <div class="row">
+           <div class="col-md-2"> 
+              <button type="submit" class="btn btn-success" *ngIf="!carros.id" >
+                  <i class="fa fa-save"></i>Cadastrar
+              </button>
+
+              <button type="submit" class="btn btn-primary" *ngIf="carros.id" >
+                  <i class="fa fa-sync-alt"></i>Atualizar
+              </button>
+           </div>
+           <div class="col-md-2"> 
+              <button type="button" class="btn btn-danger" (click)="voltar()" >
+                  <i class="fa fa-arrow-alt-circle-left"></i>Voltar
+              </button>
+           </div>
+
+           
+        </div>
+    </form>
+</div>
